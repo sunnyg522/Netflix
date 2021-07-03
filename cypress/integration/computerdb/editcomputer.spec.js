@@ -1,4 +1,9 @@
-describe('Verify computer DB edit operations', () => {
+import AddComputerPage from "../../support/addComputer"
+import HomePage from "../../support/homepage";
+import moment from 'moment';
+import EditPage from "../../support/editpage";
+
+describe('Verify computer DB delete operations', () => {
   before(()=>{
     const uniqueSeed = Date.now().toString();
         var companys = ["Apple Inc.",  
@@ -27,12 +32,7 @@ describe('Verify computer DB edit operations', () => {
     cy.visit('http://computer-database.herokuapp.com/computers')
   })
 
-  it('Search for computer name',()=>{
-    cy.addNewComputer(Cypress.env('computerName'), '', '', Cypress.env('company'), Cypress.env('companyValue'))
-    cy.searchComputer(Cypress.env('computerName'))
-  })
-
-  it('Search with updated computername',()=>{
+  it('Edit computer value',()=>{
     const uniqueSeed = Date.now().toString();
     const computerName = "Automation"+uniqueSeed
     const companyName = Cypress.env('company')
@@ -41,28 +41,31 @@ describe('Verify computer DB edit operations', () => {
     const updatedCompany = "RCA"
      cy.addNewComputer(computerName, '', '', companyName, companyValue)
      cy.updateComputer(computerName, updatedName, updatedCompany)
-     cy.searchComputer(updatedName)
      cy.deleteComputer(updatedName)
   })
 
-  it('Search with partial value of computer name', ()=>{
-    cy.searchComputer('Automation')
+  it('Edit with valid intro date',()=>{
+
   })
 
-  it('Search with speical symb', ()=>{
-    cy.searchComputer('!')
+  it('Edit with valid discontinued date',()=>{
+      
   })
 
-  it('Search with numberic',()=>{
-    cy.addNewComputer('123456', '', '', Cypress.env('company'), Cypress.env('companyValue'))
-    cy.searchComputer('123456')
-    cy.deleteComputer('123456')
+  it('Edit with invalid intro date',()=>{
+      
   })
 
-  it('Search with delted computer name', ()=>{
-    cy.deleteComputer(Cypress.env('computerName'))
-    cy.checkComputer(Cypress.env('computerName'))
+  it('Edit with invalid discontinued date',()=>{
+      
   })
 
+  it('Edit by adding company',()=>{
+      
+  })
+
+  it('Edit by adding changing company',()=>{
+      
+  })
   
 })
