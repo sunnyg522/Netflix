@@ -1,0 +1,17 @@
+{
+  "name": "netflix",
+  "version": "1.0.0",
+  "description": "Take Home test for Dinesh",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "test": "npx cypress run ./cypress/integration/aritable/signup.spec.js"
+  },
+  "author": "Dinesh Gunda",
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/cypress": "latest",
+    "cypress": "7.6.0",
+    "moment": "^2.29.1"
+  }
+}
