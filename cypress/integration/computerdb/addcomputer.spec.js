@@ -193,4 +193,14 @@ describe('Verify computer DB CURD operations', () => {
     cy.get('.error > label').should('be.visible')
     addPage.getCancelButton().click()
   })
+
+  it('Add user with FirstName and LastName with space sepration',()=>{
+    cy.addNewComputer("FristName Lastname", '', '', Cypress.env('company'), Cypress.env('companyValue'))
+    cy.deleteComputer("FristName Lastname")
+  })
+
+  it('Add user with special char',()=>{
+    cy.addNewComputer("Name!", '', '', Cypress.env('company'), Cypress.env('companyValue'))
+    cy.deleteComputer("Name!")
+  })
 })
