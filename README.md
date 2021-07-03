@@ -12,7 +12,12 @@ Make sure you have latest version of node and then run following command
 npm install
 ```
 
-# run automation
+# run automation complete automation
+```bash
+npx cypress run
+```
+
+# run individual sepc file
 ```bash
 npx cypress run ./cypress/integration/computerdb/addcomputer.spec.js
 ```

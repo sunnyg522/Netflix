@@ -31,43 +31,10 @@ describe('Verify computer DB search operations', () => {
   beforeEach(() => {
     cy.visit('http://computer-database.herokuapp.com/computers')
   })
-
+  
   it('Search for computer name',()=>{
     cy.addNewComputer(Cypress.env('computerName'), '', '', Cypress.env('company'), Cypress.env('companyValue'))
-    cy.searchComputer(Cypress.env('computerName'))
-  })
-
-  it('Search with updated computername',()=>{
-    const uniqueSeed = Date.now().toString();
-    const computerName = "Automation"+uniqueSeed
-    const companyName = Cypress.env('company')
-    const companyValue = Cypress.env('companyValue')
-    const updatedName = "UpdatedName"+uniqueSeed
-    const updatedCompany = "RCA"
-     cy.addNewComputer(computerName, '', '', companyName, companyValue)
-     cy.updateComputer(computerName, updatedName, updatedCompany)
-     cy.searchComputer(updatedName)
-     cy.deleteComputer(updatedName)
-  })
-
-  it('Search with partial value of computer name', ()=>{
-    cy.searchComputer('Automation')
-  })
-
-  it('Search with speical symb', ()=>{
-    cy.searchComputer('!')
-  })
-
-  it('Search with numberic',()=>{
-    cy.addNewComputer('123456', '', '', Cypress.env('company'), Cypress.env('companyValue'))
-    cy.searchComputer('123456')
-    cy.deleteComputer('123456')
-  })
-
-  it('Search with delted computer name', ()=>{
     cy.deleteComputer(Cypress.env('computerName'))
-    cy.checkComputer(Cypress.env('computerName'))
   })
-
   
 })
