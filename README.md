@@ -3,7 +3,7 @@ Netflix cypress test
 
 
 # Download application
-git clone git@github.com:sunnyg522/airtable.git
+git clone git@github.com:sunnyg522/Netflix.git
 
 # Install dependencies
 
