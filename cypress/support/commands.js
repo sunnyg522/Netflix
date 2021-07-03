@@ -65,7 +65,7 @@ Cypress.Commands.add('searchComputer',(computerName)=>{
     cy.visit('http://computer-database.herokuapp.com/computers')
     homePage.getSearchBox().click().should('be.visible').type(computerName)
     homePage.getSearchSubmitButton().should('be.visible').click()
-    cy.get('tbody > tr > :nth-child(1) > a')
+    homePage.getSearchedElement()
     .should('be.visible')
     cy.contains(computerName).should('be.visible')
 })
