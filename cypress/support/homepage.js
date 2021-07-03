@@ -15,7 +15,7 @@ class HomePage{
         return cy.get('#searchsubmit').should('be.visible')
     }
     getSearchedElement(){
-        return cy.get('tbody > tr > :nth-child(1) > a').should('be.visible')
+        return cy.get('tbody > :nth-child(1) > :nth-child(1) > a').should('be.visible')
     }
     verifyNothingFoundLabel(){
         cy.contains('Nothing to display').should('be.visible')

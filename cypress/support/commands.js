@@ -26,7 +26,6 @@
 
 import '@testing-library/cypress/add-commands'
 import AddComputerPage from '../support/addComputer'
-import moment from 'moment';
 import HomePage from '../support/homepage'
 import EditPage from '../support/editpage'
 
@@ -84,8 +83,8 @@ Cypress.Commands.add('updateComputer',(computerName,updatedName, updatedCompany)
 Cypress.Commands.add('checkComputer',(computerName)=>{
     cy.url().should('include',"computers")
     cy.visit('http://computer-database.herokuapp.com/computers')
-    cy.get('#searchbox').click().should('be.visible').type(computerName)
-    cy.get('#searchsubmit').should('be.visible').click()
+    homePage.getSearchBox().click().should('be.visible').type(computerName)
+    homePage.getSearchSubmitButton().should('be.visible').click()
     cy.contains('Nothing to display').should('be.visible')
     cy.contains('No computers found').should('be.visible')
 })
@@ -93,14 +92,14 @@ Cypress.Commands.add('checkComputer',(computerName)=>{
 //Command to delete new compuater
 Cypress.Commands.add('deleteComputer',(computerName)=>{
     cy.searchComputer(computerName)
-    cy.get('tbody > tr > :nth-child(1) > a')
+    homePage.getSearchedElement()
     .should('be.visible')
     .click()
-    cy.get('#name')
+    editPage.getName()
     .should('be.visible')
     .should('have.value',computerName)
-    cy.get('.topRight > .btn').click()
-    cy.checkComputer(computerName)
+    editPage.getDeleteButton().click()
+    editPage.verifyDeleteMessage()
 })
 // //Sort the feilds by values
 // Cypress.Commands.add('sortFileds',(fieldsName)=>{

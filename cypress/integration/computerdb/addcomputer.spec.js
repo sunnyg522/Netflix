@@ -21,10 +21,8 @@ describe('Verify computer DB CURD operations', () => {
         "OMRON",  "BBN Technologies",  "Lenovo Group",  "ASUS",  
         "Amstrad",  "Sun Microsystems",  "Texas Instruments",  
         "HTC Corporation",  "Research In Motion",  "Samsung Electronics"]
-        // var companys = cy.getCompanys()
         var randomValue = Math.floor(Math.random()*companys.length)
         var company = companys[randomValue];
-        // var company = cy.getCompany(randomValue)
         console.log(company)
         Cypress.env("company",company)
         Cypress.env("companyValue", randomValue+1)

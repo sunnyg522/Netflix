@@ -26,5 +26,8 @@ class EditPage{
     getCancelButton(){
         return cy.get('a.btn')
     }
+    verifyDeleteMessage(){
+        cy.contains('Computer has been deleted').should('be.visible')
+    }
 }
 export default EditPage
