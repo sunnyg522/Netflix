@@ -79,6 +79,12 @@ Cypress.Commands.add('updateComputer',(computerName,updatedName, updatedCompany)
     editPage.getSaveButton().click()
 })
 
+//Command to open Edit window
+Cypress.Commands.add('editComputer',(computerName)=>{
+    cy.searchComputer(computerName)
+    homePage.getSearchedElement().click()
+})
+
 //Search for computer
 Cypress.Commands.add('checkComputer',(computerName)=>{
     cy.url().should('include',"computers")

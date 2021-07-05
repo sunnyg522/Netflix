@@ -3,10 +3,10 @@ class EditPage{
         return cy.get('#name').should('be.visible');
     }
     getIntroDate(){
-        return null;
+        return cy.get('#introduced');
     }
     getDiscontinuedDate(){
-        return null;
+        return cy.get('#discontinued');
     }
     getCompany(){
         return cy.get('#company');

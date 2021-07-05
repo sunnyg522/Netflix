@@ -50,7 +50,11 @@ describe('Verify computer DB edit operations', () => {
   })
 
   it('Search with speical symb', ()=>{
-    cy.searchComputer('!')
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    cy.addNewComputer('Name!', '', '', companyName, companyValue)
+    cy.searchComputer('Name!')
+    cy.deleteComputer('Name!')
   })
 
   it('Search with numberic',()=>{

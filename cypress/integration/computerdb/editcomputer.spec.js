@@ -45,27 +45,91 @@ describe('Verify computer DB delete operations', () => {
   })
 
   it('Edit with valid intro date',()=>{
-
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    var now = new Date();
+    var dateString = moment(now).format('YYYY-MM-DD')
+    editPage.getIntroDate().click().type(dateString)
+    editPage.getSaveButton().click()
+    cy.deleteComputer(computerName)
   })
 
   it('Edit with valid discontinued date',()=>{
-      
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    var now = new Date();
+    var dateString = moment(now).format('YYYY-MM-DD')
+    editPage.getDiscontinuedDate().click().type(dateString)
+    editPage.getSaveButton().click()
+    cy.deleteComputer(computerName)
   })
 
   it('Edit with invalid intro date',()=>{
-      
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    var dateString = '10-10-1999'
+    editPage.getIntroDate().click().type(dateString)
+    editPage.getSaveButton().click()
+    cy.get('.error > label').should('be.visible')
+    editPage.getCancelButton().click()
+    cy.deleteComputer(computerName)
   })
 
   it('Edit with invalid discontinued date',()=>{
-      
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    var dateString = '10-10-1999'
+    editPage.getDiscontinuedDate().click().type(dateString)
+    editPage.getSaveButton().click()
+    cy.get('.error > label').should('be.visible')
+    editPage.getCancelButton().click()
+    cy.deleteComputer(computerName)
   })
 
   it('Edit by adding company',()=>{
-      
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('company')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    editPage.getCompany().select('RCA')
+    editPage.getSaveButton().click()
+    cy.deleteComputer(computerName)
   })
 
   it('Edit by adding changing company',()=>{
-      
+    const uniqueSeed = Date.now().toString();
+    const computerName = "Automation"+uniqueSeed
+    const companyName = Cypress.env('RCA')
+    const companyValue = Cypress.env('companyValue')
+    const editPage = new EditPage();
+    cy.addNewComputer(computerName, '', '', companyName, companyValue)
+    cy.editComputer(computerName)
+    editPage.getCompany().select('Atari')
+    editPage.getSaveButton().click()
+    cy.deleteComputer(computerName)
   })
   
 })
